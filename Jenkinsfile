@@ -8,7 +8,7 @@ pipeline {
             label 'build-node'
           }
           steps {
-            sh 'yarn'
+            sh 'npm i'
             sh 'npm run build-app'
           }
         }
