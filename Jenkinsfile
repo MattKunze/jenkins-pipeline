@@ -3,14 +3,23 @@ pipeline {
   stages {
     stage('Build') {
       parallel {
-        stage('Build Node') {
+        stage('Node') {
           agent {
             label 'build-node'
           }
-          steps {
-            sh 'npm i'
-            sh 'npm run build-app'
-            sh 'npm run test-app'
+          stages {
+            stage('Build') {
+              steps {
+                sh 'npm i'
+                sh 'npm run build-app'
+                sh 'npm run test-app'
+              }
+            }
+            stage('Test') {
+              steps {
+                sh 'npm run test-app'
+              }
+            }
           }
           post {
             always {
