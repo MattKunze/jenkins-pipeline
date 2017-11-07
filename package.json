@@ -1,0 +1,11 @@
+{
+	"name": "jenkins-pipeline",
+	"description": "playground for experimenting with Jenkins pipeline builds",
+	"scripts": {
+		"build-app": "cd packages/node-app && npm run build",
+		"start-app": "cd packages/node-app && npm start"
+	},
+	"devDependencies": {
+		"lerna": "^2.5.1"
+	}
+}
