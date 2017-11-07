@@ -7,15 +7,17 @@ pipeline {
           agent {
             label 'build-node'
           }
-          stage('Build') {
-            steps {
-              sh 'npm i'
-              sh 'npm run build-app'
+          steps {
+            stage('Build') {
+              steps {
+                sh 'npm i'
+                sh 'npm run build-app'
+              }
             }
-          }
-          stage('Test') {
-            steps {
-              sh 'npm run test:ci'
+            stage('Test') {
+              steps {
+                sh 'npm run test:ci'
+              }
             }
           }
         }
