@@ -5,7 +5,7 @@
 		"postinstall": "lerna bootstrap",
 		"build-app": "cd packages/node-app && npm run build",
 		"start-app": "cd packages/node-app && npm start",
-		"test-app": "cd packages/node-app && npm test:ci"
+		"test-app": "cd packages/node-app && npm run test:ci"
 	},
 	"devDependencies": {
 		"lerna": "^2.5.1"

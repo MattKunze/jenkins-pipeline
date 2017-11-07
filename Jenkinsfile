@@ -25,7 +25,7 @@ pipeline {
           steps {
             bat 'npm i'
             bat 'npm run build-app'
-            sh 'npm run test-app'
+            bat 'npm run test-app'
           }
           post {
             always {
