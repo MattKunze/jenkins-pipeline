@@ -11,10 +11,14 @@ pipeline {
             sh 'npm i'
             sh 'npm run build-app'
           }
-          stage('Test Node') {
-            steps {
-              sh 'npm run test-app'
-            }
+        }
+        stage('Build Windows') {
+          agent {
+            label 'build-vs2k8'
+          }
+          steps {
+            bat 'npm i'
+            bat 'npm run build-app'
           }
         }
       }
