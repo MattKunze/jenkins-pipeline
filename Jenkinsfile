@@ -3,21 +3,18 @@ pipeline {
   stages {
     stage('Build') {
       parallel {
-        stage('Node') {
+        stage('Build Node') {
           agent {
             label 'build-node'
           }
           steps {
-            stage('Build') {
-              steps {
-                sh 'npm i'
-                sh 'npm run build-app'
-              }
-            }
-            stage('Test') {
-              steps {
-                sh 'npm run test:ci'
-              }
+            sh 'npm i'
+            sh 'npm run build-app'
+            sh 'npm run test-app'
+          }
+          post {
+            always {
+              junit 'packages/node-app/*.xml'
             }
           }
         }
@@ -28,6 +25,12 @@ pipeline {
           steps {
             bat 'npm i'
             bat 'npm run build-app'
+            sh 'npm run test-app'
+          }
+          post {
+            always {
+              junit 'packages/node-app/*.xml'
+            }
           }
         }
       }
