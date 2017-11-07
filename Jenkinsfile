@@ -11,11 +11,6 @@ pipeline {
             sh 'npm i'
             sh 'npm run build-app'
           }
-          stage('Test Node') {
-            steps {
-              sh 'npm run test-app'
-            }
-          }
         }
         stage('Build Windows') {
           agent {
