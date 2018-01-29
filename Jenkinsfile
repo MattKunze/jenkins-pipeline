@@ -14,7 +14,7 @@ pipeline {
           }
           post {
             always {
-              junit 'packages/karma-integration/*.xml'
+              junit 'packages/karma-integration/build/*.xml'
               junit 'packages/node-app/*.xml'
             }
           }
