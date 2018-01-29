@@ -1,3 +1,4 @@
+var path = require('path')
 var webpackConfig = require('./webpack.config')
 delete webpackConfig.entry
 delete webpackConfig.output
@@ -9,9 +10,12 @@ module.exports = config => {
     preprocessors: {
       'tests.bundle.js': ['webpack']
     },
-    reporters: ['tap'],
+    reporters: ['junit'],
     browsers: ['jsdom'],
     webpack: webpackConfig,
+    junitReporter: {
+      outputFile: path.join(__dirname, '/build/results.xml')
+    },
     tapReporter: {
       outputFile: './build/results.tap'
     }

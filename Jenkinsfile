@@ -11,10 +11,10 @@ pipeline {
             sh 'npm i'
             sh 'npm run test-app'
             sh 'npm run test-karma'
-            step([$class: "TapPublisher", testResults: "packages/karma-integration/build/*.tap"])
           }
           post {
             always {
+              junit 'packages/karma-integration/*.xml'
               junit 'packages/node-app/*.xml'
             }
           }
