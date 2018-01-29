@@ -17,10 +17,10 @@ pipeline {
               junit 'packages/node-app/*.xml'
             }
             success {
-              stash includes 'packages/node-app/build/**/*', name: 'node-results'
+              stash includes: 'packages/node-app/build/**/*', name: 'node-results'
             }
             unstable {
-              stash includes 'packages/node-app/build/**/*', name: 'node-results'
+              stash includes: 'packages/node-app/build/**/*', name: 'node-results'
             }
           }
         }
