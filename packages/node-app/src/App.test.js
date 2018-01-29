@@ -7,6 +7,6 @@ it('renders without crashing', () => {
   ReactDOM.render(<App />, div);
 });
 
-it('has a failing test', => {
+it('has a failing test', () => {
   throw new Error('It done blew up');
 })
