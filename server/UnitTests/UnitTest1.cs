@@ -49,7 +49,7 @@ namespace UnitTests
         // [ClassCleanup()]
         // public static void MyClassCleanup() { }
         //
-        // Use TestInitialize to run code before running each test 
+        // Use TestInitialize to run code before running each test
         // [TestInitialize()]
         // public void MyTestInitialize() { }
         //
@@ -62,9 +62,12 @@ namespace UnitTests
         [TestMethod]
         public void TestMethod1()
         {
-            //
-            // TODO: Add test logic	here
-            //
+        }
+
+        [TestMethod]
+        public void TestMethod2()
+        {
+          throw new ApplicationException(".NET exception!");
         }
     }
 }
