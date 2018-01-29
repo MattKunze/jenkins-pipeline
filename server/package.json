@@ -1,0 +1,13 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "msbuild vs2k8.sln",
+    "pretest": "msbuild vs2k8.sln",
+    "test": "mstest /testcontainer:UnitTests\\bin\\Debug\\UnitTests.dll"
+  },
+  "author": "",
+  "license": "ISC"
+}

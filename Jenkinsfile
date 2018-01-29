@@ -23,11 +23,10 @@ pipeline {
           }
           steps {
             bat 'npm i'
-            bat 'npm run test-app'
+            bat 'npm run test-server'
           }
           post {
             always {
-              junit 'packages/node-app/*.xml'
             }
           }
         }
@@ -63,7 +62,7 @@ pipeline {
           }
           steps {
             bat 'npm i'
-            bat 'npm run build-app'
+            bat 'npm run build-server'
           }
         }
       }
