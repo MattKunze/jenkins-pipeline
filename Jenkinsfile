@@ -25,10 +25,6 @@ pipeline {
             bat 'npm i'
             bat 'npm run test-server'
           }
-          post {
-            always {
-            }
-          }
         }
       }
     }
