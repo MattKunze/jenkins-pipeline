@@ -24,6 +24,12 @@ pipeline {
           steps {
             bat 'npm i'
             bat 'npm run test-server'
+            mstest testResultsFile: "server/TestResults/**/*.trx", keepLongStdio: true
+          }
+          post {
+            always {
+              junit 'server/TestResults/**.xml'
+            }
           }
         }
       }
