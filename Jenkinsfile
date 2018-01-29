@@ -1,7 +1,44 @@
 pipeline {
   agent none
   stages {
+    stage('Test') {
+      parallel {
+        stage('Test Node') {
+          agent {
+            label 'build-node'
+          }
+          steps {
+            sh 'npm i'
+            sh 'npm run test-app'
+          }
+          post {
+            always {
+              junit 'packages/node-app/*.xml'
+            }
+          }
+        }
+        stage('Test Windows') {
+          agent {
+            label 'build-vs2k8'
+          }
+          steps {
+            bat 'npm i'
+            bat 'npm run test-app'
+          }
+          post {
+            always {
+              junit 'packages/node-app/*.xml'
+            }
+          }
+        }
+      }
+    }
     stage('Build') {
+      when {
+        anyOf {
+          branch 'master'; branch 'qa'; branch 'dev'
+        }
+      }
       parallel {
         stage('Build Node') {
           agent {
@@ -10,12 +47,8 @@ pipeline {
           steps {
             sh 'npm i'
             sh 'npm run build-app'
-            sh 'npm run test-app'
           }
           post {
-            always {
-              junit 'packages/node-app/*.xml'
-            }
             success {
               stash includes: 'packages/node-app/build/**/*', name: 'node-results'
             }
@@ -31,17 +64,16 @@ pipeline {
           steps {
             bat 'npm i'
             bat 'npm run build-app'
-            bat 'npm run test-app'
-          }
-          post {
-            always {
-              junit 'packages/node-app/*.xml'
-            }
           }
         }
       }
     }
     stage('Archive') {
+      when {
+        anyOf {
+          branch 'master'; branch 'qa'; branch 'dev'
+        }
+      }
       agent {
         label 'build-node'
       }
