@@ -22,7 +22,7 @@ pipeline {
             label 'build-vs2k8'
           }
           steps {
-            bat 'npm i'
+            bat 'npm i --ignore-scripts'
             bat 'npm run test-server'
             mstest testResultsFile: "server/TestResults/**/*.trx", keepLongStdio: true
           }
@@ -63,7 +63,7 @@ pipeline {
             label 'build-vs2k8'
           }
           steps {
-            bat 'npm i'
+            bat 'npm i --ignore-scripts'
             bat 'npm run build-server'
           }
         }
