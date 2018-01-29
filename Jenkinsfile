@@ -10,6 +10,7 @@ pipeline {
           steps {
             sh 'npm i'
             sh 'npm run test-app'
+            sh 'npm run test-karma'
           }
           post {
             always {
