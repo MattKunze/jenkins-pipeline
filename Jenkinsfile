@@ -34,6 +34,11 @@ pipeline {
       }
     }
     stage('Build') {
+      when {
+        anyOf {
+          branch 'master'; branch 'qa', branch 'dev'
+        }
+      }
       parallel {
         stage('Build Node') {
           agent {
@@ -64,6 +69,11 @@ pipeline {
       }
     }
     stage('Archive') {
+      when {
+        anyOf {
+          branch 'master'; branch 'qa', branch 'dev'
+        }
+      }
       agent {
         label 'build-node'
       }
