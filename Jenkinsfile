@@ -16,6 +16,12 @@ pipeline {
             always {
               junit 'packages/node-app/*.xml'
             }
+            success {
+              stash includes 'packages/node-app/build/**/*', 'node-results'
+            }
+            unstable {
+              stash includes 'packages/node-app/build/**/*', 'node-results'
+            }
           }
         }
         stage('Build Windows') {
@@ -33,6 +39,15 @@ pipeline {
             }
           }
         }
+      }
+    }
+    stage('Archive') {
+      agent {
+          label: 'build-node'
+      }
+      steps {
+        unstash 'node-results'
+        archiveArtifacts 'packages/node-app/build/**/*'
       }
     }
   }
