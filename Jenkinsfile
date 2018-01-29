@@ -26,11 +26,6 @@ pipeline {
             bat 'npm run test-server'
             step([$class: "MSTestPublisher", testResultsFile: "server/TestResults/**/*.trx", failOnError: true, keepLongStdio: true])
           }
-          post {
-            always {
-              junit 'server/TestResults/**.xml'
-            }
-          }
         }
       }
     }
