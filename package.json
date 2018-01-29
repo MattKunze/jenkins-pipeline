@@ -10,6 +10,7 @@
 		"test-server": "cd server && npm run test"
 	},
 	"devDependencies": {
+		"cash-true": "0.0.2",
 		"lerna": "^2.5.1"
 	}
 }
