@@ -22,13 +22,9 @@ pipeline {
             label 'build-vs2k8'
           }
           steps {
-            bat 'npm i'
-            bat 'npm run test-app'
-          }
-          post {
-            always {
-              junit 'packages/node-app/*.xml'
-            }
+            bat 'npm i --ignore-scripts'
+            bat 'npm run test-server'
+            step([$class: "MSTestPublisher", testResultsFile: "server/TestResults/**/*.trx", failOnError: true, keepLongStdio: true])
           }
         }
       }
@@ -62,8 +58,8 @@ pipeline {
             label 'build-vs2k8'
           }
           steps {
-            bat 'npm i'
-            bat 'npm run build-app'
+            bat 'npm i --ignore-scripts'
+            bat 'npm run build-server'
           }
         }
       }
