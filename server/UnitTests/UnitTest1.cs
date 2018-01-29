@@ -67,7 +67,6 @@ namespace UnitTests
         [TestMethod]
         public void TestMethod2()
         {
-          throw new ApplicationException(".NET exception!");
         }
     }
 }
