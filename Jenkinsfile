@@ -43,7 +43,7 @@ pipeline {
     }
     stage('Archive') {
       agent {
-          label: 'build-node'
+        label 'build-node'
       }
       steps {
         unstash 'node-results'
