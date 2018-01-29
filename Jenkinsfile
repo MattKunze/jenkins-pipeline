@@ -24,7 +24,7 @@ pipeline {
           steps {
             bat 'npm i --ignore-scripts'
             bat 'npm run test-server'
-            step([$class: "MSTestPublisher', testResultsFile: "server/TestResults/**/*.trx", failOnError: true, keepLongStdio: true])
+            step([$class: "MSTestPublisher", testResultsFile: "server/TestResults/**/*.trx", failOnError: true, keepLongStdio: true])
           }
           post {
             always {
