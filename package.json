@@ -7,10 +7,15 @@
 		"build-server": "cd server && npm run build",
 		"start-app": "cd packages/node-app && npm start",
 		"test-app": "cd packages/node-app && npm run test:ci",
+		"test-karma": "cd packages/karma-integration && npm run test",
 		"test-server": "cd server && npm run test"
 	},
 	"devDependencies": {
 		"cash-true": "0.0.2",
 		"lerna": "^2.5.1"
+	},
+	"prettier": {
+		"semi": false,
+		"singleQuote": true
 	}
 }

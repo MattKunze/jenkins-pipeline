@@ -10,9 +10,11 @@ pipeline {
           steps {
             sh 'npm i'
             sh 'npm run test-app'
+            sh 'npm run test-karma'
           }
           post {
             always {
+              junit 'packages/karma-integration/build/*.xml'
               junit 'packages/node-app/*.xml'
             }
           }
