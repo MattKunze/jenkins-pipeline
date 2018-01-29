@@ -36,7 +36,7 @@ pipeline {
     stage('Build') {
       when {
         anyOf {
-          branch 'master'; branch 'qa', branch 'dev'
+          branch 'master'; branch 'qa'; branch 'dev'
         }
       }
       parallel {
@@ -71,7 +71,7 @@ pipeline {
     stage('Archive') {
       when {
         anyOf {
-          branch 'master'; branch 'qa', branch 'dev'
+          branch 'master'; branch 'qa'; branch 'dev'
         }
       }
       agent {
